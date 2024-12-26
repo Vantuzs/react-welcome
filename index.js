@@ -1,31 +1,30 @@
-class HeaderComponent extends React.Component {
-    anotherMethod(){ // Другоие какието всередине компонента не запрещено(но метод render это обязательно)
-
+class Counter extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            count: 0
+        };
     }
 
-    render(){ // единственный метод, который вы должны вызначить в класе
-        console.log(this.props);
-        const p = React.createElement('p',{},'Super paragraph');
-        const h2 = React.createElement('h2',{title: 'Hi!',name: 'Suuu'},`Hello ${this.props.name}`);
-        const article = React.createElement('article',{},h2,p);
-        return article;
+    increment(){
+        // todo: state.cout++;
+        this.setState({
+            count: this.state.count + 1
+        })
+    }
+
+    render(){
+        const h2 = React.createElement('h2',{},this.state.count);
+        const btn = React.createElement('button',{onClick: ()=>{this.increment()}},'+');
+        return React.createElement(React.Fragment,{},h2,btn);
     }
 }
-const component = React.createElement(HeaderComponent,{name: 'Iogansan'}, 'Text -- Iogansan');
-const component2 = React.createElement(HeaderComponent,{name: 'Larsen'},'Text -- Larsen');
 
-const parentElement = React.createElement('section',{},component,component2);
-
-
-
-
-
+const component = React.createElement(Counter);
 
 const root = document.querySelector('#root');
 
-ReactDOM.render(parentElement,root);
-
-
+ReactDOM.render(component,root)
 
 
 
@@ -45,4 +44,5 @@ ReactDOM.render(parentElement,root);
 Рекат-елемент намного легче, нежели тот же елемент в нативном DOMе.
 6. С этих Реакт-елементов как маленьких блоков состоят Реакт-комноненты.
 А с Реакт-компонент состоят странички, которые будут видеть наши пользователи
+7. Состояние компоненты - такие данные, которые могут изменятся за время жызни нашей компоненты.
 */
