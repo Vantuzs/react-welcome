@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 class Counter extends React.Component{
     constructor(props){
         super(props);
@@ -53,28 +56,6 @@ const root = document.querySelector('#root');
 
 ReactDOM.render(component,root)
 
-class Couter2 extends React.Component{
-    constructor(promps){
-        super(promps);
-        this.state = {
-            care: 1
-        }
-    }
-
-    increment(){
-        if(this.state.cate === 10){
-            return 0;
-        }else{
-        this.setState({
-            care: this.state.care + 1
-        })
-    }}
-
-    decrement(){
-
-    }
-        
-}
 
 
 
